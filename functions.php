@@ -37,16 +37,6 @@ function themeConfig($form)
     $form->addInput($footerOutPut);
 }
 
-/*
- * @params Widget_Archive $archive
- */
-function themeInit($archive){
-    // 判断是否为文章或页面
-    if($archive->is('single')){
-        Content::viewCounter($archive);
-    }
-}
-
 function themeFields($layout) {
     $thumb = new Typecho_Widget_Helper_Form_Element_Textarea('thumb', NULL, NULL, _t('thumb'), _t('输入图片URL，如有多个则一行一个，随机选择展示。'));
     $layout->addItem($thumb);
@@ -55,6 +45,12 @@ function themeFields($layout) {
     $layout->addItem($viewsNum);
 }
 
-function isPjax () {
-    return array_key_exists ('HTTP_X_PJAX', $_SERVER) && $_SERVER['HTTP_X_PJAX'];
+/*
+ * @params Widget_Archive $archive
+ */
+function themeInit($archive){
+    // 判断是否为文章或页面
+    if($archive->is('single')){
+        Content::viewCounter($archive);
+    }
 }
