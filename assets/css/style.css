@@ -1466,7 +1466,11 @@ body:not(.navbar-open) header#site-header:not(.top) {
     padding-bottom: 2.125rem;
 }
 
-.pagination .prev {
+.pagination > li {
+    display: none;
+}
+
+.pagination > li.prev {
     float: left;
     display: inline-block;
     text-align: center;
@@ -1482,7 +1486,7 @@ body:not(.navbar-open) header#site-header:not(.top) {
     transition-property: box-shadow, -webkit-box-shadow;
     -webkit-transition-duration: 0.2s;
     transition-duration: 0.2s;
-    padding: 16px 24px;
+    padding: 10px 40px;
     font-size: 1.125rem;
     line-height: 1;
     color: #ffb6c1;
@@ -1495,7 +1499,7 @@ body:not(.navbar-open) header#site-header:not(.top) {
     box-shadow: 4px 6px 24px 0 rgba(155,155,155,0.2);
 }
 
-.pagination .next {
+.pagination > li.next {
     float: right;
     display: inline-block;
     text-align: center;
@@ -1513,9 +1517,13 @@ body:not(.navbar-open) header#site-header:not(.top) {
     background-color: #ffb6c1;
     color: #fff;
     font-weight: 600;
-    padding: 16px 24px;
+    padding: 10px 40px;
     font-size: 1.125rem;
     line-height: 1;
+}
+
+.pagination .next > a {
+    color: #FFF!important;
 }
 
 .pagination .next:hover {
