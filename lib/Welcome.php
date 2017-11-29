@@ -39,7 +39,7 @@ class Welcome {
         }
     }
     
-    function OutPut () {
+    static function OutPut () {
         if (self::is_bot()) {
             return;
         }
