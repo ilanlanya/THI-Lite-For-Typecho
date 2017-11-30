@@ -61,9 +61,9 @@ window['Page'] = {
         this.Action ();
         this.Console();
         this.SignBlogTitle();
-        if (localStorage.Debug_Mode == false || localStorage.Debug_Mode == undefined) {
+        /* if (localStorage.Debug_Mode == false || localStorage.Debug_Mode == undefined) {
             this.SetContextMenu();
-        }    
+        } */
 
         // Menu
         $("#menu").on('click', function(){
@@ -164,7 +164,7 @@ window['Page'] = {
             this.SetImages();
 
             // 文章内容处理
-            this.SetContent();
+            this.SetContext();
             
             // 激活 PhotoSwipe
             if($("img[data-action=zoom]").length) {
@@ -189,6 +189,8 @@ window['Page'] = {
             } else if (LocalConst.COMMENT_SYSTEM_EMBED === LocalConst.COMMENT_SYSTEM_CHANGYAN){
                 this.LoadChangyan();
             }
+
+            $("#postContentTemp").remove();
         }
         if ($('div.index').length) {
             if ($('div.postContent').length) {
@@ -518,7 +520,7 @@ window['Page'] = {
         POWERMODE.shake = false; // turn off shake
         document.body.addEventListener('input', POWERMODE);
     },
-    SetContent: function () {
+    SetContext: function () {
         var str = $("#postContentTemp").html(),
             reg = '\\[H(.*?) (.*?)\\](.*?)\\[\\/H(.*?)\\](<br>|<br \\/>)*', arr, content, imgclass = '';
         if (arr = str.match(new RegExp(reg, 'g'))) {
@@ -562,7 +564,14 @@ window['Page'] = {
         $("section.hasImageGrid figure.imageGrid figcaption").each(function() {
             $(this).html($(this).parent().parent().parent().find('.title').text());
         });
-
+        
+        // 加密文章样式处理
+        if ($("form.protected").length) {
+            $("form.protected input.submit").addClass('btn-factory-link');
+            $("form.protected input[name=protectPassword]").attr('placeholder', $("form.protected p.word").html());
+            $("form.protected p.word").remove();
+        }
+        
         // DPlayer 
         $("#postContent DPlayer").each(function(i){
             var url = $(this).data('url'),
@@ -778,7 +787,7 @@ window['Page'] = {
         }
     },
     SetContextMenu: function () {
-        if (!$('menu').html()) {
+        if ($('menu').length) {
             var ContextMenuData = JSON.parse($.ajax({url: LocalConst.ASSETS_URL + 'js/ContextMenu.js', async: false}).responseText);
             if (!ContextMenuData) {
                 return ;
