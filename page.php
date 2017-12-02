@@ -24,8 +24,13 @@
                     </div>
                 </nav>
                 <div class="postBody" id="postBody">
-                    <div id="postContentTemp" style="display:none!important"><?php $this->content(); ?></div>
-                    <div id="postContent"></div>
+                    <div id="postContent">
+                        <section class="chapterSpecs material detail">
+                            <div class="postContent" id="postContent">
+                                <?php $this->content(); ?>
+                            </div>
+                        </section>
+                    </div>
                     <section class="chapterSpecs material detail postCommentDom">
                         <div class="postContent" id="postComment">
                             <?php $this->need('component/comments.php'); ?>

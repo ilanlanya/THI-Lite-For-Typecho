@@ -190,7 +190,7 @@ window['Page'] = {
                 this.LoadChangyan();
             }
 
-            $("#postContentTemp").remove();
+            /* $("#postContentTemp").remove(); */
         }
         if ($('div.index').length) {
             if ($('div.postContent').length) {
@@ -521,6 +521,7 @@ window['Page'] = {
         document.body.addEventListener('input', POWERMODE);
     },
     SetContext: function () {
+        /*
         var str = $("#postContentTemp").html(),
             reg = '\\[H(.*?) (.*?)\\](.*?)\\[\\/H(.*?)\\](<br>|<br \\/>)*', arr, content, imgclass = '';
         if (arr = str.match(new RegExp(reg, 'g'))) {
@@ -561,6 +562,8 @@ window['Page'] = {
             $(this).find('br:first').remove();
             $(this).find('br:last').remove();
         });
+        */
+        
         $("section.hasImageGrid figure.imageGrid figcaption").each(function() {
             $(this).html($(this).parent().parent().parent().find('.title').text());
         });
