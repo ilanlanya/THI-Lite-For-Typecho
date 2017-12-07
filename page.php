@@ -3,13 +3,19 @@
 <div class="post">
     <div class="grid grid-fluid">
         <?php 
-            if (array_key_exists ('thumb', unserialize ($this->___fields ()))) {
-                $postImage = Content::randomThumb ($this->fields->thumb);
+            $fields = unserialize ($this->___fields ());
+            if (!empty($fields['thumb'])) {
+                $postImageRET = Content::randomThumb ($this->fields->thumb);
             } else {
                 $postImage = THI::randomBanner($this->options->banner);
             }
+            if (is_array($postImageRET)) {
+                $postImage = 'style="background-image:url(' . $postImageRET['img'] . ');background-position: ' . $postImageRET['position'] . ';"';
+            } else {
+                $postImage = 'style="background-image:url(' . $postImageRET . ')"';
+            }
         ?>
-        <div class="siteHeaderBG" style="background-image: url(<?php echo $postImage ?>);"></div>
+        <div class="siteHeaderBG" <?php echo $postImage ?>></div>
     </div>
     <div class="">
         <div class="">

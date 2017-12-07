@@ -25,13 +25,16 @@ if (!isset ($_GET['ajax_load'])) {
                         <a href="<?php $this->permalink() ?>">
                             <div class="postCard">
                                 <?php 
-                                    if (array_key_exists ('thumb', unserialize ($this->___fields ()))) {
+                                    $fields = unserialize ($this->___fields ());
+                                    if (!empty($fields['thumb'])) {
                                         $postImageRET = Content::randomThumb ($this->fields->thumb);
-                                        if (is_array($postImageRET)) {
-                                            $postImage = 'style="background-image:url(' . $postImageRET['img'] . ');background-position: ' . $postImageRET['position'] . ';"';
-                                        } else {
-                                            $postImage = 'style="background-image:url(' . $postImageRET . ')"';
-                                        }
+                                    } else {
+                                        $postImageRET = Content::noThumb();
+                                    }
+                                    if (is_array($postImageRET)) {
+                                        $postImage = 'style="background-image:url(' . $postImageRET['img'] . ');background-position: ' . $postImageRET['position'] . ';"';
+                                    } else {
+                                        $postImage = 'style="background-image:url(' . $postImageRET . ')"';
                                     }
                                 ?>
                                 <div class="postImage" <?php echo $postImage ?>></div>
