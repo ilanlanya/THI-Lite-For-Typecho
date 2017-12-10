@@ -7,7 +7,7 @@
             if (!empty($fields['thumb'])) {
                 $postImageRET = Content::randomThumb ($this->fields->thumb);
             } else {
-                $postImage = THI::randomBanner($this->options->banner);
+                $postImageRET = THI::randomBanner($this->options->banner);
             }
             if (is_array($postImageRET)) {
                 $postImage = 'style="background-image:url(' . $postImageRET['img'] . ');background-position: ' . $postImageRET['position'] . ';"';
