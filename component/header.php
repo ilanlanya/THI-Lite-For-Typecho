@@ -28,7 +28,7 @@
             COMMENT_SYSTEM: <?php echo THI_Const::COMMENT_SYSTEM_EMBED ?>,
             COMMENT_SYSTEM_DISQUS: <?php echo THI_Const::COMMENT_SYSTEM_DISQUS ?>,
             COMMENT_SYSTEM_CHANGYAN: <?php echo THI_Const::COMMENT_SYSTEM_CHANGYAN ?>,
-            COMMENT_SYSTEM_EMBED: <?php echo $this->options->useComment ?>,
+            COMMENT_SYSTEM_EMBED: <?php echo isset($this->options->useComment) ?  $this->options->useComment : 0 ?>,
             COMMENTS_ORDER: 'DESC',
             DISQUS_SHORT_NAME: '<?php if (isset($this->options->disqusShortName)) echo $this->options->disqusShortName ?>',
             CHANGYAN_APPID: '<?php if (isset($this->options->changyanAPPID)) echo $this->options->changyanAPPID ?>',
