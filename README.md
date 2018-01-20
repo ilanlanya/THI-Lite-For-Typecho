@@ -32,3 +32,10 @@ THI Lite。。从 THI 的基础上修改而来。。
 ```
 <link name="" url="" img=""></link>
 ```
+2. DPlayer 支持
+```
+<DPlayer url="" pic="" autoplay="" thumbnails="" subtitle=""></DPlayer>
+```
+注: 
+url参数为必填项，其他都为选填
+autoplay: true / false
