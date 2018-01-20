@@ -786,5 +786,6 @@ $(document).on('pjax:send', function() {
     $("#loading-view").removeClass('folding');
 });
 $(document).on('pjax:complete', function() {
+    $("html,body").animate({scrollTop:$('.siteHeaderBG').height()},1300);
     Page.Action();
 });
