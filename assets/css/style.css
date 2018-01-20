@@ -651,10 +651,8 @@ body #loading-view .loader-text {
     -o-transition: all .3s ease;
 }
 
-body.navbar-open .siteHeader .siteMenuBotton .siteMenuBottonToggle .material-icons {
-    transform: rotate(90deg);
-    position: inherit;
-    /* top: 5px; */
+body.mu .siteHeader .siteMenuBotton .siteMenuBottonToggle .material-icons {
+    
 }
 
 .siteHeader .siteMenuCtaButton {
@@ -700,46 +698,71 @@ body.navbar-open .siteHeader .siteMenuBotton .siteMenuBottonToggle .material-ico
     box-sizing: border-box;
 }
 
-.siteNavs {
+body.mu {
+    height: 100%;
+}
+
+html.mu {
+    height: 100%;
+}
+
+.nav {
     position: fixed;
-    z-index: 998;
-    display: block;
-    top: 64px;
+    height: 100%;
     width: 100%;
-    background: rgba(255,255,255,0.95);
-    margin: 0;
-    list-style: none;
-    -webkit-box-shadow: 0 4px 5px 0 rgba(0,0,0,0.05), 0 1px 0 0 #f3f3f3 inset;
-    box-shadow: 0 4px 5px 0 rgba(0,0,0,0.05), 0 1px 0 0 #f3f3f3 inset;
+    background: rgba(255,255,255,.97);
+    z-index: 998;
+    top: -100%;
+    -webkit-transition: top 0.3s cubic-bezier(0.25, 0.5, 0.5, 0.9);
+    -moz-transition: top 0.3s cubic-bezier(0.25, 0.5, 0.5, 0.9);
+    transition: top 0.3s cubic-bezier(0.25, 0.5, 0.5, 0.9);
 }
 
-.siteNavs .siteNavsList {
-    margin-top: 0;
-    margin-bottom: 0;
-    overflow: visible;
-    white-space: nowrap;
-}
-
-.siteNavs .siteNavsListItem {
-    display: inline-block;
-    height: 40px;
-    padding: 0 16px;
-    font-size: 14px;
-    line-height: 40px;
+.menu-menu {
     text-align: center;
-    cursor: pointer;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
+    margin-top: 200px;
 }
 
-.siteNavs .siteNavsListItem:first-child {
-    padding-left: 0;
+.menu-menu li {
+    font-size: 20px;
+    display: inline-block;
+    margin: 0 20px 20px 0;
 }
 
-.siteNavs .siteNavsListItem a {
-        color: #000000;
+.menu-menu a {
+    color: #666;
+    letter-spacing: 1px;
+}
+
+.menu-menu a:hover {
+    color: #333;
+}
+
+@media screen and (max-width: 780px) {
+    .menu-menu {
+        width: 80%;
+        margin: 160px auto 0;
+    }
+    .menu-menu li {
+        font-size: 16px;
+    }
+}
+
+.nav p {
+    color: #999;
+    font-size: 14px;
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    bottom: 30px;
+}
+
+.nav p:first-letter {
+    font-family: sans-serif;
+}
+
+body.mu .nav {
+    top: 0!important;
 }
 
 .siteHeader {
@@ -825,7 +848,7 @@ body.navbar-open .siteHeader .siteMenuBotton .siteMenuBottonToggle .material-ico
     box-shadow: 0 1px 0 0 #f3f3f3 inset;
     -webkit-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out;
-    z-index: 998;
+    z-index: 997;
     -webkit-animation-delay: 0.5s;
     animation-delay: 0.5s;
 }
@@ -2189,276 +2212,6 @@ button,html input[type=button],input[type=reset],input[type=submit] {
     margin: -10px;
 }
 
-/*====== [ 鼠标右键 ] =======*/
-menu {
-    position: absolute;
-    min-width: 160px;
-    background-color: #fff;
-    box-shadow: 0px 0px 10px rgba(96,96,96,.5);
-    color: #202020;
-    font-size: 12px;
-    opacity: 0;
-    transition: opacity .2s;
-    padding-left: 0px;
-    font-family: din,'Hiragino Sans GB','Microsoft Yahei',Arial,sans-serif!important;
-    border-radius: 3px;
-    z-index: 999999;
-    display: none;
-}
-
-menu::before {
-    content: "";
-    display: block;
-    height: 3px;
-}
-
-menu::after {
-    content: "";
-    display: block;
-    height: 3px;
-}
-
-.showMenu {
-    opacity: 1;
-    display: block;
-}
-
-menu > a {
-    text-decoration: none;
-    font-weight: 100!important;
-    font-size: 12px;
-    color: #505050;
-    transition: all .3s;
-    display: block;
-    padding: 5px 15px;
-    line-height: 24px;
-    transition: all .2s;
-}
-
-menu > a:hover {
-    color: #000;
-    background-color: #f1f1f1;
-}
-
-/*====== [ 旧版通知框 ] =======*/
-#announcement {
-    width: 402px
-}
-
-#announcement .announcement-widget-inner {
-    -webkit-transition: all 0.1s ease-in;
-    transition: all 0.1s ease-in
-}
-
-#announcement .announcement-tab {
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
-    display: block;
-    position: fixed;
-    right: 85px;
-    bottom: 70px;
-    min-width: 96px;
-    padding: 0 10px;
-    max-height: 40px;
-    background: rgba(0,0,0,0.8);
-    border-radius: 20px;
-    color: white;
-    line-height: 40px;
-    text-align: center;
-    cursor: pointer;
-}
-
-#announcement .announcement-tab .count {
-    display: inline-block;
-    line-height: 24px;
-    width: 24px;
-    margin: 0 -0.3rem 0 0.3rem;
-    background: white;
-    border-radius: 100%;
-    padding: 0.2em;
-    color: #f85244
-}
-
-#announcement .announcement-tab:hover {
-    background: rgba(0,0,0,0.6)
-}
-
-#announcement .announcement-tab .opened-message {
-    display: inline
-}
-
-#announcement .announcement-tab .closed-message {
-    display: none
-}
-
-#announcement .announcement-widget-inner {
-    position: fixed;
-    bottom: 124px;
-    right: 85px;
-    width: 400px;
-    background: rgba(255,255,255,0.96);
-    border-radius: 10px;
-    border: solid 1px #eee;
-    visibility: visible;
-    opacity: 1;
-}
-
-#announcement .announcement-widget-inner:before,#announcement .announcement-widget-inner:after {
-    content: "";
-    position: absolute;
-    top: 100%
-}
-
-#announcement .announcement-widget-inner:before {
-    right: 30px;
-    height: 0;
-    width: 0;
-    border-left: 12px solid transparent;
-    border-right: 12px solid transparent;
-    border-top: 12px solid #eee
-}
-
-#announcement .announcement-widget-inner:after {
-    right: 32px;
-    height: 0;
-    width: 0;
-    border-left: 10px solid transparent;
-    border-right: 10px solid transparent;
-    border-top: 10px solid #fff
-}
-
-#announcement .announcement-widget-inner .announcement-header {
-    border-bottom: solid 1px #eee;
-    text-align: right;
-    text-decoration: none;
-    font-size: 0.875rem;
-    padding: 10px;
-}
-
-#announcement .announcement-widget-inner .announcement-header a {
-    color: #9b9b9b;
-}
-
-#announcement .announcement-articles {
-    height: 60vh;
-    overflow: scroll;
-    border-radius: 10px
-}
-
-#announcement .announcement-article {
-    padding: 12px 26px;
-    border-top: solid 1px #eee;
-    font-size: 0.8175em;
-    line-height: 1.8
-}
-
-#announcement .announcement-article:first-child {
-    border: none
-}
-
-#announcement .announcement-article .date {
-    margin: 0 0 0.5em 0;
-    color: #ffb6c1
-}
-
-#announcement .announcement-article .date i.icon-pixiv-p {
-    line-height: 1
-}
-
-#announcement .announcement-article .date time {
-    line-height: 1;
-    font-size: 0.75rem
-}
-
-#announcement h1,#announcement h2,#announcement h3 {
-    margin: 0 0 1em 0
-}
-
-#announcement h1 {
-    font-size: 1rem;
-    line-height: 1.5
-}
-
-#announcement h2 {
-    font-size: 0.875rem
-}
-
-#announcement h3 {
-    font-size: 0.8125rem
-}
-
-#announcement blockquote {
-    margin: 0 1em 1.5em 1em;
-    padding: 1em;
-    background: rgba(155,155,155,0.2)
-}
-
-#announcement blockquote p:last-child {
-    margin: 0
-}
-
-#announcement.closed .opened-message {
-    display: none
-}
-
-#announcement.closed .closed-message {
-    display: inline
-}
-
-#announcement.closed .announcement-widget-inner {
-    opacity: 0;
-    visibility: hidden
-}
-
-#announcement .badge {
-    display: inline-block;
-    margin: 0.25em 0 1em 0;
-    padding: 0 0.5em;
-    border-radius: 3px;
-    text-align: center;
-    font-size: 0.75rem
-}
-
-#announcement .badge.announcement_type {
-    width: 7em;
-    background: #D9F0FA;
-    color: #389AC4
-}
-
-#announcement .badge.announcement_type.notice {
-    background: tomato;
-    color: #fff
-}
-
-@media screen and (min-width: 0px) and (max-width: 600px) {
-    #announcement.closed .announcement-widget-inner {
-        display:none
-    }
-
-    #announcement .announcement-widget-inner {
-        display: block;
-        top: 8px;
-        right: 10px;
-        bottom: 72px;
-        left: 10px;
-        width: auto
-    }
-
-    #announcement .announcement-articles {
-        height: 88%;
-        -webkit-overflow-scrolling: touch
-    }
-
-    #announcement .announcement-articles body img {
-        width: 100% !important
-    }
-
-    #announcement .announcement-tab {
-        right: 10px;
-        bottom: 16px
-    }
-}
-
 /*====== [ 通知框 ] =======*/
 #notification {
     display: none;
@@ -2509,218 +2262,6 @@ menu > a:hover {
 
 #notification .title {
     border-color: #ffb6c1;
-}
-
-/*======== 加密文章输入框样式 ========*/
-.BookPlanWidget .BookPlanWidget_Forms {
-    margin-bottom: 16px;
-    border: 2px solid #ffb6c1;
-    background-color: #fff;
-    -webkit-box-shadow: 0 2px 3px 0 rgba(0,0,0,0.05);
-    box-shadow: 0 2px 3px 0 rgba(0,0,0,0.05);
-    border-radius: 4px;
-}
-
-@media screen and (min-width: 0px) and (max-width: 600px) {
-    .BookPlanWidget .BookPlanWidget_Forms {
-        margin-top:-1px;
-        border-radius: 0 0 4px 4px;
-        border-top: none
-    }
-}
-
-.BookPlanWidget .BookPlanWidget_Forms .book-plans-submit {
-    background-color: #1f8ded
-}
-
-.BookPlanWidget .BookPlanForm {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex
-}
-
-@media screen and (min-width: 0px) and (max-width: 600px) {
-    .BookPlanWidget .BookPlanForm {
-        -webkit-box-orient:vertical;
-        -webkit-box-direction: normal;
-        -ms-flex-flow: column;
-        flex-flow: column
-    }
-}
-
-.BookPlanWidget .BookPlanForm .BookPlanForm_SubmitButton {
-    display: -webkit-inline-box;
-    display: -ms-inline-flexbox;
-    display: inline-flex;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
-    padding: 0 40px;
-    border: none;
-    border-radius: 0;
-    color: #fff;
-    background-color: #ffb6c1;
-    font-weight: 600;
-}
-
-@media screen and (min-width: 0px) and (max-width: 600px) {
-    .BookPlanWidget .BookPlanForm .BookPlanForm_SubmitButton {
-        display:block;
-        -webkit-box-flex: 1;
-        -ms-flex: 1;
-        flex: 1;
-        padding: 12px 0
-    }
-}
-
-.BookPlanWidget .BookPlanForm .BookPlanForm_Column {
-    position: relative;
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
-    padding: 16px 0 8px
-}
-
-@media screen and (min-width: 0px) and (max-width: 600px) {
-    .BookPlanWidget .BookPlanForm .BookPlanForm_Column {
-        padding:8px 16px
-    }
-}
-
-.BookPlanWidget .BookPlanForm .BookPlanForm_Column.BookPlanForm_Column-First {
-    -webkit-box-flex: 1;
-    -ms-flex: 1;
-    flex: 1;
-    padding: 16px 24px 8px;
-}
-
-@media screen and (min-width: 0px) and (max-width: 600px) {
-    .BookPlanWidget .BookPlanForm .BookPlanForm_Column.BookPlanForm_Column-First {
-        -webkit-box-flex:0;
-        -ms-flex: none;
-        flex: none;
-        padding: 16px 16px 8px
-    }
-}
-
-.BookPlanWidget .BookPlanForm .BookPlanForm_Column.BookPlanForm_Column-First .BookPlanForm_Label {
-    margin-bottom: 0;
-    padding: 0;
-}
-
-@media screen and (min-width: 0px) and (max-width: 1199px) {
-    .BookPlanWidget .BookPlanForm .BookPlanForm_Column.BookPlanForm_Column-PrintColor {
-        display:none
-    }
-}
-
-.BookPlanWidget .BookPlanForm .BookPlanForm_Column.BookPlanForm_Column-Submit {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    padding: 0
-}
-
-.BookPlanWidget .BookPlanForm .BookPlanForm_Column.BookPlanForm_Column-Submit::before {
-    content: none
-}
-
-@media screen and (min-width: 0px) and (max-width: 600px) {
-    .BookPlanWidget .BookPlanForm .BookPlanForm_Column.BookPlanForm_Column-Submit {
-        padding:0
-    }
-}
-
-.BookPlanWidget .BookPlanForm .BookPlanForm_Column+.BookPlanForm_Column::before {
-    content: "";
-    position: absolute;
-    height: calc(100% - 32px);
-    border-left: solid 1px rgba(155,155,155,0.15)
-}
-
-.BookPlanWidget .BookPlanForm .BookPlanForm_Label {
-    display: block;
-    margin-bottom: 4px;
-    padding: 0 24px;
-    font-size: 0.875rem;
-    color: #66757f
-}
-
-.BookPlanWidget .BookPlanForm .BookPlanForm_Selection {
-    width: 100%;
-    padding: 0 40px 0 24px;
-    font-size: 1.125rem;
-    font-weight: 500;
-    line-height: 32px;
-    height: 32px;
-    cursor: pointer;
-    color: #3a4953;
-    position: relative;
-    z-index: 1
-}
-
-.BookPlanWidget .BookPlanForm .BookPlanForm_Selection+i {
-    position: absolute;
-    margin-left: -32px;
-    line-height: 32px
-}
-
-.BookPlanWidget .BookPlanForm .BookPlanForm_Selection:hover {
-    color: #1f8ded
-}
-
-.BookPlanWidget .BookPlanForm .BookPlanForm_Selection:hover+.icon-arrow_carrot-down {
-    color: #1f8ded
-}
-
-.BookPlanWidget .BookPlanForm .BookPlanForm_Input {
-    display: inline-block;
-    font-size: 1.125rem;
-    font-weight: 500;
-    line-height: 32px
-}
-
-.BookPlanWidget .BookPlanForm .BookPlanForm_Input.BookPlanForm_Input-EventInput,.BookPlanWidget .BookPlanForm .BookPlanForm_Input.BookPlanForm_Input-ShipmentDateInput {
-    width: 100%;
-    margin-top: 4px
-}
-
-.BookPlanWidget .BookPlanForm .BookPlanForm_Selection,.BookPlanWidget .BookPlanForm .BookPlanForm_Input {
-    margin: 0;
-    padding: 0;
-    background: none;
-    border: none;
-    border-radius: 0;
-    outline: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    -ms-appearance: none;
-    -webkit-box-shadow: none;
-    box-shadow: none;
-    overflow: "";
-    max-width: 100%
-}
-
-.BookPlanWidget {
-    -webkit-tap-highlight-color: transparent
-}
-
-.BookPlanWidget .BookPlanForm .BookPlanForm_SubmitButton,.page-books-root-index .FooterSection .FooterSection_CTAButton {
-    -webkit-box-shadow: 5px 6px 14px rgba(255, 182, 193, 0.44);
-    box-shadow: 5px 6px 14px rgba(255, 182, 193, 0.44);
-    -webkit-transition-property: background-color, -webkit-box-shadow;
-    transition-property: background-color, -webkit-box-shadow;
-    transition-property: box-shadow, background-color;
-    transition-property: box-shadow, background-color, -webkit-box-shadow;
-    -webkit-transition-duration: 0.2s;
-    transition-duration: 0.2s;
-}
-
-.BookPlanWidget .BookPlanForm .BookPlanForm_SubmitButton:hover,.page-books-root-index .FooterSection .FooterSection_CTAButton:hover {
-    background-color: #fdd2d9;
-    -webkit-box-shadow: 4px 6px 24px 0 #fdd2d9;
-    box-shadow: 4px 6px 24px 0 #fdd2d9;
-    text-decoration: none;
 }
 
 /*======== 动画 ========*/

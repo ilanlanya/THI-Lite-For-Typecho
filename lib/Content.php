@@ -2,21 +2,13 @@
 if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 
 class Content {
+    private static $Thumb_I = 0;
     public static function randomThumb ($thumbs) {
-        if (empty($thumbs)) {
-            $thumb = self::noThumb();
-        } else {
-            $thumbs = mb_split("\n", $thumbs);
-            $thumb = $thumbs[rand(0, count($thumbs) - 1)];
-            $thumb = trim($thumb);
-        }
+        $thumbs = mb_split("\n", $thumbs);
+        $thumb = $thumbs[rand(0, count($thumbs) - 1)];
+        $thumb = trim($thumb);
         if (strpos ($thumb, '!') !== false) {
-            $thumbArr = explode('!', $thumb);
-            $thumb = [
-                'img' => $thumbArr[0],
-                'position' => $thumbArr[1]
-                
-            ];
+            $thumb = self::explodeThumb($thumb);
         }
         return $thumb;
     }
@@ -34,8 +26,27 @@ class Content {
             THI_Const::STATIC_URL . '/Background/68.png',
             THI_Const::STATIC_URL . '/Background/70.jpg'
         ];
+        $thumb = $imageList[self::$Thumb_I];
+        if (strpos ($thumb, '!') !== false) {
+            $thumb = self::explodeThumb($thumb);
+        }
+        if ($i < count($imageList)) {
+            self::$Thumb_I++;
+        } else {
+            self::$Thumb_I = 0;
+        }
+        return $thumb;  
+    }
+    
+    public static function explodeThumb ($thumb) {
+        $thumbArr = explode('!', $thumb);
+        $thumb = [
+            'img' => $thumbArr[0],
+            'position' => $thumbArr[1]
+            
+        ];
         
-        return $imageList[array_rand ($imageList)];
+        return $thumb;
     }
     
     public static function viewCounter ($archive) {
@@ -54,21 +65,6 @@ class Content {
             array_push($views, $cid);
             $views = implode(',', $views);
             Typecho_Cookie::set('__typecho_views', $views); //记录到cookie
-        }
-    }
-    
-    public static function getPostImg ($cid) {
-        $db = Typecho_Db::get ();
-        $rs = $db->fetchRow($db->select ('table.contents.text')
-            ->from ('table.contents')
-            ->where ('cid=?', $cid));
-        $content = preg_replace ("/\t|\n|\r/", "", $rs['text']);
-        if (preg_match ('/\[.*\]:*(.*?(png|jpeg|jpg|gif|bmp)$)/', $content, $result)) {
-            return $result[1];
-        } else if (preg_match ('/<img.*src="(.*?)".*?>/', $content, $result)) {
-            return $result[1];
-        } else {
-            return '';
         }
     }
 }
