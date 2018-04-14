@@ -22,7 +22,7 @@
     <link rel="stylesheet" href="<?php $this->options->themeUrl('assets/css/style.css'); ?>">
     <script>
         window['LocalConst'] = {
-            SITE_NAME: '<?php $this->options->title(); ?>',
+            SITE_NAME: '<?php echo addslashes($this->options->title); ?>',
             SITE_URL: '<?php $this->options->siteUrl(); ?>',
             SIGN_SITE_TITLE: '<?php if (isset($this->options->SignBlogTitle)) echo $this->options->SignBlogTitle ?>',
             ASSETS_URL: '<?php $this->options->themeUrl('assets/'); ?>',
